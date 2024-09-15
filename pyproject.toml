@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "wallpaper"
+version = "0.1.0"
+description = "a wallPaper changer"
+authors = ["leo"]
+license = "none"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+PyQt6 = "^6.7.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+packages = [
+    { include = "wallPaper" }
+]
