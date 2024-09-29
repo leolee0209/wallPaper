@@ -15,7 +15,7 @@ class Tray:
     def CreateTray(self,window):
         self.window=window
         CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
-        iconPath=os.path.join(CURRENT_DIRECTORY, "icon.png")
+        iconPath=os.path.join(CURRENT_DIRECTORY, "res/icon.png")
         icon = QIcon(iconPath)
 
 

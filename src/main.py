@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import wallpaper.gui as gui
+import src.gui as gui
 
 def main():
     gui.Start()

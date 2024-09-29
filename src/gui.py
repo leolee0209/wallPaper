@@ -10,7 +10,7 @@ class MyApp(QWidget):
     def __init__(self, app):
         super().__init__()
         CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
-        uiPath=os.path.join(CURRENT_DIRECTORY, "UI.ui")
+        uiPath=os.path.join(CURRENT_DIRECTORY, "res/UI.ui")
         uic.loadUi(uiPath,self)
         self.tray=tray.Tray()
         self.app=app
