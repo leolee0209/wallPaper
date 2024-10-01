@@ -3,11 +3,13 @@ import worker
 import os
 from PyQt6.QtWidgets import QWidget, QApplication,QFileDialog
 from PyQt6 import uic
-import save
+from save import s
 import tray
+from logger import logger as l
 
 class MyApp(QWidget):
     def __init__(self, app):
+        l.log('init gui')
         super().__init__()
         CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
         uiPath=os.path.join(CURRENT_DIRECTORY, "res/UI.ui")
@@ -25,16 +27,18 @@ class MyApp(QWidget):
         self.hourBox.valueChanged.connect(self.hourChange)
         self.minuteBox.valueChanged.connect(self.minuteChange)
         self.secondBox.valueChanged.connect(self.secondChange)
-        self.loadData()
+        l.log('create tray icon')
         self.tray.CreateTray(self)
+        self.loadData()
         self.worker = worker.Worker(self)  # Create a Worker instance
+        l.log('main program starts')
         self.worker.start()
         
     def quit(self):
-        save.pushSave(tuple(self.tray.save))
+        #save.pushSave(tuple(self.tray.save))
         self.tray.quit()
     def closeEvent(self, event):
-        save.pushSave(tuple(self.tray.save))
+        s.pushSave(tuple(self.tray.save))
     def getTime(self):
         return self.tray.save[0]*3600+self.tray.save[1]*60+self.tray.save[2]
     def getDirectory(self):
@@ -47,7 +51,7 @@ class MyApp(QWidget):
 
 
     def loadData(self):
-        o= save.loadSave()
+        o= self.tray.save
         self.hourBox.setValue(o[0])
         self.minuteBox.setValue(o[1])
         self.secondBox.setValue(o[2])

@@ -1,13 +1,13 @@
 from PyQt6.QtGui import *
 import os
 from PyQt6.QtWidgets import *
-import save
+from save import s
 
 class Tray:
     def __init__(self):
-        self.save=list(save.loadSave())
+        self.save=list(s.loadSave())
     def quit(self):
-        save.pushSave(tuple(self.save))
+        s.pushSave(tuple(self.save))
         self.window.app.quit()
     def trayiconclicked(self):
         self.window.show()

@@ -2,8 +2,9 @@ from PyQt6.QtCore import QThread
 import subprocess as sps
 import time
 from queue import Queue
-queue = Queue()
+from logger import logger as l
 
+queue = Queue()
 gsCmd='/usr/bin/gsettings'
 
 def GetFiles(directory):
@@ -40,6 +41,7 @@ class Worker(QThread):
             try:
                 cmd=f'{gsCmd} set org.gnome.desktop.background {pic_uri} file://{self.myApp.getDirectory()}/{name}'
                 sps.run(cmd,shell=True,check= True,capture_output=True).stdout
+                l.log('wallpaper changed to \"'+name+'\"')
             except sps.CalledProcessError as e:
                 print()
             timeinter=self.myApp.getTime()
