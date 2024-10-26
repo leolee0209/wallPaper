@@ -1,5 +1,14 @@
-dist/
+# vscode
 .vscode/
-src/__pycache__/
-src/res/log.txt
-src/res/data.json
+
+# python
+run/dist/
+run/src/__pycache__/
+run/src/res/log.txt
+run/src/res/data.json
+
+# c++
+launch/bin
+launch/build
+launch/CMakeLists.txt
+launch/log.txt
