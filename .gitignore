@@ -6,6 +6,7 @@ run/dist/
 run/src/__pycache__/
 run/src/res/log.txt
 run/src/res/data.json
+run/venv
 
 # c++
 launch/bin

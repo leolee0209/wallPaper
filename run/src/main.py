@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import src.gui as gui
+import gui as gui
 from logger import logger as l
 
 def main():
