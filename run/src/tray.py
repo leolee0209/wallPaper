@@ -7,7 +7,6 @@ class Tray:
     def __init__(self):
         self.save=list(s.loadSave())
     def quit(self):
-        s.pushSave(tuple(self.save))
         self.window.app.quit()
     def trayiconclicked(self):
         self.window.show()

@@ -35,10 +35,10 @@ class MyApp(QWidget):
         self.worker.start()
         
     def quit(self):
-        #save.pushSave(tuple(self.tray.save))
+        s.pushSave(tuple(self.tray.save),self.worker)
         self.tray.quit()
     def closeEvent(self, event):
-        s.pushSave(tuple(self.tray.save))
+        s.pushSave(tuple(self.tray.save),self.worker)
     def getTime(self):
         return self.tray.save[0]*3600+self.tray.save[1]*60+self.tray.save[2]
     def getDirectory(self):

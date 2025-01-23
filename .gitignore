@@ -3,7 +3,7 @@
 
 # python
 run/dist/
-run/src/__pycache__/
+run/src/__pycache__
 run/src/res/log.txt
 run/src/res/data.json
 run/venv
@@ -13,3 +13,4 @@ launch/bin
 launch/build
 launch/CMakeLists.txt
 launch/log.txt
+build

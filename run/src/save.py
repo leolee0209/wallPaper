@@ -22,7 +22,7 @@ class s:
                 json.dump(save, f, ensure_ascii=False, indent=4)
         return (save['hour'],save['minute'],save['second'],save['path'])
     @staticmethod
-    def pushSave(o):
+    def pushSave(o,worker):
         l.log('saving changes')
         save = json.load(open(s.dataPath))
         save['hour']=o[0]
@@ -31,3 +31,4 @@ class s:
         save['path']=o[3]
         with open(s.dataPath, 'w', encoding='utf-8') as f:
             json.dump(save, f, ensure_ascii=False, indent=4)
+        worker.changenow=True

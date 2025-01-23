@@ -21,6 +21,7 @@ def GetColorTheme():
     return prefer_dark_theme
 
 class Worker(QThread):
+    changenow=False
     def __init__( self, myApp):
         self.myApp=myApp
         super(Worker, self).__init__()
@@ -45,7 +46,14 @@ class Worker(QThread):
             except sps.CalledProcessError as e:
                 print()
             timeinter=self.myApp.getTime()
-            time.sleep(timeinter)
+            x=0
+            while x< timeinter:
+                time.sleep(1)
+                x=x+1
+                if self.changenow==True:
+                    x=0
+                    timeinter=self.myApp.getTime()
+                    self.changenow=False
             i=i+1
             if i>=len(self.fileNames):
                 i=0
