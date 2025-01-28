@@ -22,15 +22,20 @@ def GetColorTheme():
 
 class Worker(QThread):
     changenow=False
-    def __init__( self, myApp):
+    def __init__(self, myApp):
         self.myApp=myApp
         super(Worker, self).__init__()
     def resetFileNames(self):
         self.fileNames=GetFiles(self.myApp.getDirectory())
 
+        allName=''
+        for s in self.fileNames:
+            allName+=s+' '
+        l.log('fileNames reset: ' + allName)
+
     def run(self):
 
-        self.fileNames=GetFiles(self.myApp.getDirectory())
+        self.resetFileNames()
         prefer_dark_theme=GetColorTheme()
 
         pic_uri = 'picture-uri-dark' if (prefer_dark_theme) else 'picture-uri'
@@ -55,5 +60,5 @@ class Worker(QThread):
                     timeinter=self.myApp.getTime()
                     self.changenow=False
             i=i+1
-            if i>=len(self.fileNames):
+            if i>=len(self.fileNames)-1:
                 i=0
