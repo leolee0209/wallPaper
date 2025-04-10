@@ -35,7 +35,6 @@ class Worker(QThread):
         pic_uri = 'picture-uri-dark' if (prefer_dark_theme) else 'picture-uri'
 
         i=0
-        #/usr/bin/gsettings set org.gnome.desktop.background picture-uri-dark file:///home/leo/Desktop/wallPaper/1.png
         while True:
             name=self.fileNames[i]
             try:
